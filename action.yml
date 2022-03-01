@@ -1,0 +1,26 @@
+# action.yml
+name: SeleniumCICD
+description: Run docker with selenium, python, pytest and pytest allure
+author: Nakajiss <smoke42rus81@gmail.com>
+
+branding:
+  color: blue
+  icon: feather
+
+inputs:
+  test-plan-path:
+    required: true
+    description: selenium  pytest plan to execute
+  args:
+    required: false
+    description: Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - "-n"
+  - "-t"
+  - "${{ inputs.test-plan-path }}"
+  - "-l"
+  - "${{ inputs.args }}"
