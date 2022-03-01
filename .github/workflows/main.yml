@@ -1,0 +1,20 @@
+on: [push]
+jobs:
+  selenium_job:
+    runs-on: ubuntu-latest
+    name: Selenium Test Execution
+    steps:      
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Run Selenium Tests
+        uses: ./
+        with:
+          test-plan-path: ./test_onlinesim_ru.py
+          args: ""
+          
+      - name: Upload Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: result
+          path: allure_result/*.json
