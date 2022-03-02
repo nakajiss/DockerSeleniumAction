@@ -24,4 +24,4 @@ RUN chmod a+x /entrypoint.sh
 # upgrade pip
 
 
-ENTRYPOINT [ "/code/entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
