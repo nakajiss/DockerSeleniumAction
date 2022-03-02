@@ -23,4 +23,4 @@ COPY . /code/
 
 RUN pip install --no-cache -r requirements.txt
 
-CMD google-chrome --headless
+CMD pytest -v --alluredir=result
