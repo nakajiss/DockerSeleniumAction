@@ -19,10 +19,8 @@ ENV DISPLAY=:99
 RUN mkdir /code
 WORKDIR /code
 
-COPY . /code/
+COPY entrypoint.sh /code/entrypoint.sh
 # upgrade pip
-RUN pip install --upgrade pip
 
-RUN pip install --no-cache -r requirements.txt
 
-CMD pytest -v --alluredir=result
+ENTRYPOINT [ "/code/entrypoint.sh" ]
