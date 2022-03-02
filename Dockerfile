@@ -16,13 +16,11 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /bin/
 # set display port to avoid crash
 ENV DISPLAY=:99
 
-#RUN mkdir /code
-#WORKDIR /code
-#
-#COPY . /code/
+RUN mkdir /code
+WORKDIR /code
 
-RUN pip install pytest==7.0.1 \
-  && pip install selenium==4.1.2 \
-  && pip install allure-pytest==2.9.45
+COPY . /code/
 
-CMD pytest code/test_onlinesim_ru.py --alluredir=allure_result
+RUN pip install --no-cache -r -requirements.txt
+
+CMD pytest -v --alluredir=result
