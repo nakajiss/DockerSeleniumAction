@@ -10,7 +10,6 @@ jobs:
       - name: Run Selenium Tests
         uses: ./
         with:
-          test-plan-path: ./test_onlinesim_ru.py
           args: ""
           
       - name: Upload Results
