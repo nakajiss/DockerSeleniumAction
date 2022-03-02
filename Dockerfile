@@ -20,6 +20,8 @@ RUN mkdir /code
 WORKDIR /code
 
 COPY . /code/
+# upgrade pip
+RUN pip install --upgrade pip
 
 RUN pip install --no-cache -r requirements.txt
 
