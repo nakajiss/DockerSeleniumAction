@@ -9,8 +9,6 @@ jobs:
         
       - name: Run Selenium Tests
         uses: ./
-        with:
-          args: ""
           
       - name: Upload Results
         uses: actions/upload-artifact@v2
