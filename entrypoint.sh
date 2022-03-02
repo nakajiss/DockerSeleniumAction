@@ -1,4 +1,8 @@
 #!/bin/sh
+pip install --upgrade pip
+pip install --no-cache allure-pytest==2.9.45
+pip install --no-cache pytest==7.0.1
+pip install --no-cache selenium==4.1.2
 echo "Execution is being started"
 echo "**************************"
 pytest $@
