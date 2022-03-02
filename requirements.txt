@@ -1,3 +1,0 @@
-pytest==7.0.1
-selenium==4.1.2
-allure-pytest==2.9.45
