@@ -19,7 +19,7 @@ ENV DISPLAY=:99
 RUN mkdir /code
 WORKDIR /code
 
-COPY entrypoint.sh /code/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 # upgrade pip
 
 
