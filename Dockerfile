@@ -21,5 +21,8 @@ ENV DISPLAY=:99
 #
 #COPY . /code/
 
-RUN pip install -r requirements.txt
+RUN pip install pytest==7.0.1 \
+  && pip install selenium==4.1.2 \
+  && pip install allure-pytest==2.9.45
+
 CMD pytest code/test_onlinesim_ru.py --alluredir=allure_result
