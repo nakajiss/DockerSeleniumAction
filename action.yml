@@ -7,13 +7,13 @@ branding:
   color: blue
   icon: feather
 
-inputs:
-  args:
-    required: false
-    description: Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
+# inputs:
+#   args:
+#     required: false
+#     description: Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-  - "${{ inputs.args }}"
+#   args:
+#   - "${{ inputs.args }}"
