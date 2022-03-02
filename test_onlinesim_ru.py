@@ -3,13 +3,18 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.options import Options
 import allure
 
 @allure.title('Проверка доступности всех страниц кабинета')
 @allure.severity(severity_level="critical")
 
 def test_Cabinet_onlinesim ():
-    driver = WebDriver(executable_path='/bin/chromedriver')
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = WebDriver(executable_path='/bin/chromedriver',chrome_options=chrome_options)
     driver.set_window_position(0, 0)
     driver.set_window_size(1300, 900)
     action = ActionChains(driver)
