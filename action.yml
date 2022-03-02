@@ -7,13 +7,16 @@ branding:
   color: blue
   icon: feather
 
-# inputs:
-#   args:
-#     required: false
-#     description: Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
-
+inputs:
+  test-plan-path:
+    required: true
+    description: python test plan to execute
+  args:
+    required: false
+    description: Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
 runs:
   using: 'docker'
   image: 'Dockerfile'
-#   args:
-#   - "${{ inputs.args }}"
+  args:
+  - "${{ inputs.test-plan-path }}"
+  - "--alluredir=result"
