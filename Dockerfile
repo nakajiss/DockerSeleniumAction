@@ -21,6 +21,6 @@ WORKDIR /code
 
 COPY . /code/
 
-RUN pip install --no-cache -r -requirements.txt
+RUN pip install --no-cache -r requirements.txt
 
 CMD pytest -v --alluredir=result
