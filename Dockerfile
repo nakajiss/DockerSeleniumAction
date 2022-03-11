@@ -21,7 +21,6 @@ WORKDIR /code
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
-# upgrade pip
 
 
 ENTRYPOINT [ "/entrypoint.sh" ]
