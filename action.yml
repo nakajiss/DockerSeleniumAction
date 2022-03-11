@@ -13,7 +13,7 @@ inputs:
     description: python test plan to execute
   args:
     required: false
-    description: Optional arguments. For more details https://jmeter.apache.org/usermanual/get-started.html#non_gui
+    description: Optional arguments.
 runs:
   using: 'docker'
   image: 'Dockerfile'
