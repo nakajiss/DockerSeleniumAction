@@ -15,6 +15,7 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /bin/
 
 # set display port to avoid crash
 ENV DISPLAY=:99
+ENV DISPLAY_CONFIGURATION=1920x1080x24
 
 RUN mkdir /code
 WORKDIR /code
