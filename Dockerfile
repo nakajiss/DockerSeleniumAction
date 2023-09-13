@@ -2,16 +2,20 @@ FROM python:3.10
 
 ENV PYTHONUNBUFFERED 1
 
-# install google chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-RUN apt-get -y update
-RUN apt-get install -y google-chrome-stable
+# Install latest Chrome
+RUN CHROME_URL=$(curl -s https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json | jq -r '.channels.Stable.downloads.chrome[] | select(.platform == "linux64") | .url') \
+    && curl -sSLf --retry 3 --output /tmp/chrome-linux64.zip "$CHROME_URL" \
+    && unzip /tmp/chrome-linux64.zip -d /opt \
+    && ln -s /opt/chrome-linux64/chrome /usr/local/bin/chrome \
+    && rm /tmp/chrome-linux64.zip
 
-# install chromedriver
-RUN apt-get install -yqq unzip
-RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
-RUN unzip /tmp/chromedriver.zip chromedriver -d /bin/
+# Install latest chromedriver
+RUN CHROMEDRIVER_URL=$(curl -s https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json | jq -r '.channels.Stable.downloads.chromedriver[] | select(.platform == "linux64") | .url') \
+    && curl -sSLf --retry 3 --output /tmp/chromedriver-linux64.zip "$CHROMEDRIVER_URL" \
+    && unzip -o /tmp/chromedriver-linux64.zip -d /tmp \
+    && rm -rf /tmp/chromedriver-linux64.zip \
+    && mv -f /tmp/chromedriver-linux64/chromedriver "/bin/chromedriver" \
+    && chmod +x "/bin/chromedriver"
 
 # set display port to avoid crash
 ENV DISPLAY=:99
