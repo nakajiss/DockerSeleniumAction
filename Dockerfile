@@ -2,7 +2,7 @@ FROM python:3.10
 
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get -y update
+RUN apt-get -y update \
     && apt-get -y install curl
 
 
