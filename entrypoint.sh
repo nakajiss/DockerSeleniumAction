@@ -8,7 +8,8 @@ pip install --no-cache allure-python-commons
 echo "Execution is being started"
 echo "**************************"
 
-if python3 -m pytest -v -s --driver Chrome --driver-path /bin/chromedriver $@ | grep -q 'failed'; then
+python3 -m pytest -v -s --driver Chrome --driver-path /bin/chromedriver $@ &> output.log
+if output.log grep -q 'failed'; then
   exit 1
 fi
 
