@@ -2,6 +2,10 @@ FROM python:3.10
 
 ENV PYTHONUNBUFFERED 1
 
+RUN apt-get -y update
+    && apt-get -y install curl
+
+
 # Install latest Chrome
 RUN CHROME_URL=$(curl -s https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json | jq -r '.channels.Stable.downloads.chrome[] | select(.platform == "linux64") | .url') \
     && curl -sSLf --retry 3 --output /tmp/chrome-linux64.zip "$CHROME_URL" \
