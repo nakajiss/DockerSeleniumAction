@@ -5,6 +5,7 @@ pip install --no-cache termcolor
 pip install --no-cache selenium==4.9
 pip install --no-cache pytest-selenium
 pip install --no-cache allure-python-commons
+pip install --no-cache py
 echo "Execution is being started"
 echo "**************************"
 
