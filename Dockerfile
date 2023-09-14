@@ -11,7 +11,7 @@ RUN apt-get install -y google-chrome-stable
 # install chromedriver
 RUN apt-get install -yqq unzip
 RUN wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/117.0.5938.62/linux64/chromedriver-linux64.zip
-RUN unzip /tmp/chromedriver.zip chromedriver -d /bin/
+RUN unzip -j /tmp/chromedriver.zip chromedriver-linux64/chromedriver -d /bin
 
 # set display port to avoid crash
 ENV DISPLAY=:99
