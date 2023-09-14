@@ -9,7 +9,7 @@ pip install --no-cache py
 echo "Execution is being started"
 echo "**************************"
 
-python3 -m pytest -v -s --driver Chrome --driver-path /bin/chromedriver $@ #&> output.log
+python3 -m pytest -v -s --driver Chrome --driver-path /bin/chromedriver $@/tests/* #&> output.log
 #if output.log grep -q 'failed'; then
 #  exit 1
 #fi
